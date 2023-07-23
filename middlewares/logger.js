@@ -1,6 +1,8 @@
+// логгер
 const winston = require('winston');
 const expressWinston = require('express-winston');
 
+// логгер успешных запросов
 const requestLogger = expressWinston.logger({
   transports: [
     new winston.transports.File({ filename: 'request.log' }),
