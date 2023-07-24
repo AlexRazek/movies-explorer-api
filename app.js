@@ -6,12 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-// const { createUser, login, loginOut } = require('./controllers/users');
-// const { SigninValidationJoi, SignupValidationJoi } = require('./routes/auth');
 const { apiLimiter } = require('./middlewares/apiLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const auth = require('./middlewares/auth');
-// const NotFoundError = require('./utils/errors/not-found-error');
 
 const app = express();
 const { generalRoutes } = require('./routes/index');
@@ -34,8 +30,8 @@ const allowedCors = [
   'https://localhost:3000',
   'localhost:3000',
   'http://127.0.0.1:3000',
-  // 'http://api.alexmesto.nomoredomains.work',
-  // 'https://api.alexmesto.nomoredomains.work',
+  'http://api.alexmovie.nomoredomains.xyz',
+  'https://api.alexmovie.nomoredomains.xyz',
   // 'http://alexmesto.nomoredomains.work',
   // 'https://alexmesto.nomoredomains.work',
 ];
@@ -94,7 +90,7 @@ mongoose.connect(
 app.use(requestLogger); // подключаем логгер запросов
 // apiLimiter подключаем после логера запросов,иначе заблокированные запросы небудут записаны в логи
 app.use(apiLimiter);
-app.use(generalRoutes);
+app.use('/', generalRoutes);
 app.use(errorLogger); // подключаем логгер ошибок
 
 app.use(errors());
