@@ -1,5 +1,6 @@
 // const { BAD_REQUEST, NOT_FOUND, INTERNAL_SERVER_ERROR } = require('../utils/errors/errors');
 const { CREATED, SUCCESS } = require('../utils/success');
+const messages = require('../utils/constants');
 
 const Movie = require('../models/movie');
 const BadRequestError = require('../utils/errors/bad-request-error');
@@ -23,7 +24,7 @@ const addMovie = (req, res, next) => {
     description,
     image,
     trailerLink,
-    trumbnail,
+    thumbnail,
     movieId,
     nameRU,
     nameEN,
@@ -37,7 +38,7 @@ const addMovie = (req, res, next) => {
     description,
     image,
     trailerLink,
-    trumbnail,
+    thumbnail,
     owner,
     movieId,
     nameRU,
@@ -48,7 +49,7 @@ const addMovie = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при создании фильма'));
+        next(new BadRequestError(messages.invalidDataCreateMovie));
       } else {
         next(err);
       }
@@ -61,10 +62,10 @@ const deleteMovieById = (req, res, next) => {
     // eslint-disable-next-line consistent-return
     .then((movie) => {
       if (!movie) {
-        return next(new NotFoundError('Фильм с указанным _id не найден'));
+        return next(new NotFoundError(messages.invalidMovieId));
       }
       if (req.user._id !== movie.owner.toString()) {
-        return next(new Forbidden('Попытка удалить чужой фильма'));
+        return next(new Forbidden(messages.tryDeleteMovie));
       }
       // return Card.findByIdAndRemove(req.params.cardId)
       return Movie.deleteOne(movie)
@@ -73,7 +74,7 @@ const deleteMovieById = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Переданы некорректные данные для удаления фильма'));
+        next(new BadRequestError(messages.invalidDataDeleteMovie));
       } else {
         next(err);
       }

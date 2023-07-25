@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-const { apiLimiter } = require('./middlewares/apiLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { apiLimiter } = require('./middlewares/apiLimiter');
 
 const app = express();
 const { generalRoutes } = require('./routes/index');

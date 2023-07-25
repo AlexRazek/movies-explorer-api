@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const isUrl = require('validator/lib/isURL');
+const messages = require('../utils/constants');
 // const validator = require('validator'); // импортируем validator
 
 const movieSchema = new mongoose.Schema({
@@ -28,7 +29,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (isValid) => isUrl(isValid),
-      message: 'Ссылка на постер к фильму введена не корректно',
+      message: messages.invalidLinkForPoster,
     },
   },
   trailerLink: {
@@ -36,15 +37,15 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (isValid) => isUrl(isValid),
-      message: 'Ссылка на трейлер к фильму введена не корректно',
+      message: messages.invalidLinkForTrailer,
     },
   },
-  trumbnail: {
+  thumbnail: {
     type: String,
     required: true,
     validate: {
       validator: (isValid) => isUrl(isValid),
-      message: 'Мини изображение постера к фильму не корректно',
+      message: messages.invalidMiniImage,
     },
   },
   owner: {

@@ -12,6 +12,7 @@ const User = require('../models/user');
 const BadRequestError = require('../utils/errors/bad-request-error');
 const NotFoundError = require('../utils/errors/not-found-error');
 const ConflictRequest = require('../utils/errors/conflict-request-error');
+const messages = require('../utils/constants');
 
 // // получение всех пользователей
 // const getUsers = (req, res) => {
@@ -24,7 +25,7 @@ const getUserMe = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        next(new NotFoundError('Пользователь не найден'));
+        next(new NotFoundError(messages.notFoundUser));
       }
       return res.status(SUCCESS).send(user);
     })
@@ -42,7 +43,7 @@ const updateUserProfile = (req, res, next) => {
     .then((userProfile) => res.send(userProfile))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные для обновления профиля'));
+        next(new BadRequestError(messages.invalidDataUpdateProfile));
       } else {
         next(err);
       }
@@ -66,9 +67,9 @@ const createUser = (req, res, next) => {
     })
     .catch((err) => {
       if (err.code === 11000) {
-        next(new ConflictRequest('При регистрации указан email, который уже существует на сервере'));
+        next(new ConflictRequest(messages.emailAlredyExist));
       } else if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при создании пользователя'));
+        next(new BadRequestError(messages.invalidDataCreateUser));
       } else {
         next(err);
       }
@@ -100,7 +101,7 @@ const login = (req, res, next) => {
 
 // удаление Куки/cookie, при выходе из аккаунта
 const loginOut = (req, res) => {
-  res.clearCookie('jwt').send({ massage: 'Выход успешно' });
+  res.clearCookie('jwt').send(messages.successExit);
 };
 
 module.exports = {

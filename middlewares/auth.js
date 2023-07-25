@@ -1,6 +1,7 @@
 // проверка  авторизован или нет
 const jwt = require('jsonwebtoken');
 const Unauthorized = require('../utils/errors/unauthorized');
+const messages = require('../utils/constants');
 
 const { JWT_SECRET, NODE_ENV } = process.env;
 
@@ -11,7 +12,7 @@ module.exports = (req, res, next) => {
 
   // if (!authorization || !authorization.startsWith('Bearer ')) {
   if (!tokenCookie) {
-    next(new Unauthorized('Передан неверный логин или пароль'));
+    next(new Unauthorized(messages.invalidLoginOrPassword));
   }
 
   // const token = authorization.replace('Bearer ', '');
@@ -21,7 +22,7 @@ module.exports = (req, res, next) => {
     // payload = jwt.verify(token, JWT_SECRET);
     payload = jwt.verify(tokenCookie, NODE_ENV === 'production' ? JWT_SECRET : 'develop-key');
   } catch (err) {
-    next(new Unauthorized('Передан неверный логин или пароль'));
+    next(new Unauthorized(messages.invalidLoginOrPassword));
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса

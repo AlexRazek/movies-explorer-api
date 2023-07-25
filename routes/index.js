@@ -1,22 +1,19 @@
 const generalRoutes = require('express').Router();
 
 require('dotenv').config();
-const { createUser, login, loginOut } = require('../controllers/users');
-const { SigninValidationJoi, SignupValidationJoi } = require('./auth');
 const auth = require('../middlewares/auth');
 const NotFoundError = require('../utils/errors/not-found-error');
 
+const routerAuth = require('./authRoute');
 const routerUser = require('./users');
 const routerMovie = require('./movies');
+const messages = require('../utils/constants');
 
-generalRoutes.post('/signup', SignupValidationJoi, createUser);
-generalRoutes.post('/signin', SigninValidationJoi, login);
-generalRoutes.post('/signout', loginOut);
-
+generalRoutes.use('/', routerAuth);
 generalRoutes.use('/users', auth, routerUser);
 generalRoutes.use('/movies', auth, routerMovie);
 generalRoutes.all('*', (req, res, next) => {
-  next(new NotFoundError('Путь не существует'));
+  next(new NotFoundError(messages.notFoundWay));
 });
 
 module.exports = { generalRoutes };
