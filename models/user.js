@@ -6,6 +6,12 @@ const Unauthorized = require('../utils/errors/unauthorized');
 const messages = require('../utils/constants');
 
 const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    minLength: 2,
+    maxLength: 30,
+    required: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -22,12 +28,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     select: false,
-  },
-  name: {
-    type: String,
-    minLength: 2,
-    maxLength: 30,
-    required: true,
   },
 });
 

@@ -53,16 +53,16 @@ const updateUserProfile = (req, res, next) => {
 // регистрация пользователя
 const createUser = (req, res, next) => {
   const {
-    email, password, name,
+    name, email, password,
   } = req.body;
   // хешируем пароль через bcrypt
   bcrypt.hash(password, SALT_ROUNDS)
     .then((hash) => User.create({
-      email, password: hash, name,
+      name, email, password: hash,
     }))
     .then(() => {
       res.status(CREATED).send({
-        email, name,
+        name, email,
       });
     })
     .catch((err) => {
