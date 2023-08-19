@@ -92,7 +92,7 @@ const login = (req, res, next) => {
           httpOnly: true,
           // sameSite: true,
           // используется none т.к. не проходят куки с сервера ВМ на localHost
-          sameSite: 'none',
+          sameSite: 'lax',
         });
       // .end(); // если у ответа нет тела, можно использовать метод end
       // вернём токен
