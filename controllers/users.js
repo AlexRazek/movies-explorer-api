@@ -110,7 +110,8 @@ const loginOut = (req, res) => {
     sameSite: 'None',
     secure: true,
   });
-  res.clearCookie('jwt').send(messages.successExit);
+  res.clearCookie('jwt');
+  return res.send(messages.successExit);
 };
 
 module.exports = {
