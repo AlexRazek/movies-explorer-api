@@ -104,12 +104,13 @@ const login = (req, res, next) => {
 
 // удаление Куки/cookie, при выходе из аккаунта
 const loginOut = (req, res) => {
-  res.clearCookie('jwt', '', {
-    maxAge: 3600000,
+  res.cookie('jwt', '', {
+    maxAge: 0,
     httpOnly: true,
     sameSite: 'None',
     secure: true,
-  }).send(messages.successExit);
+  });
+  res.clearCookie('jwt').send(messages.successExit);
 };
 
 module.exports = {
