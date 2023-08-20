@@ -110,12 +110,7 @@ const loginOut = (req, res) => {
   //   sameSite: 'None',
   //   secure: true,
   // });
-  res.clearCookie('jwt', '', {
-    maxAge: 0,
-    httpOnly: true,
-    sameSite: 'None',
-    secure: true,
-  });
+  res.removeCookie('jwt');
   return res.send(messages.successExit);
 };
 
