@@ -103,10 +103,10 @@ const login = (req, res, next) => {
 };
 
 // удаление Куки/cookie, при выходе из аккаунта
-const loginOut = (req, res, next) => {
+const loginOut = (req, res) => {
   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
   // .send(messages.successExit);
-  res.send(messages.successExit).catch(next);
+  res.send(messages.successExit);
 };
 
 module.exports = {
