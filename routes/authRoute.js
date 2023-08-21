@@ -9,6 +9,6 @@ const {
 
 routerAuth.post('/signup', signupValidationJoi, createUser);
 routerAuth.post('/signin', signinValidationJoi, login);
-routerAuth.post('/signout', loginOut);
+routerAuth.get('/signout', loginOut);
 
 module.exports = routerAuth;

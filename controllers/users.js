@@ -104,20 +104,9 @@ const login = (req, res, next) => {
 
 // удаление Куки/cookie, при выходе из аккаунта
 const loginOut = (req, res) => {
-  res.clearCookie('jwt', '', {
-    maxAge: 0,
-    httpOnly: true,
-    sameSite: 'None',
-    secure: true,
-  }).send(messages.successExit);
-  // res.cookie('jwt', '', {
-  //   maxAge: 0,
-  //   httpOnly: true,
-  //   sameSite: 'None',
-  //   secure: true,
-  // });
-  // res.removeCookie('jwt');
-  // return res.send(messages.successExit);
+  res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+  // .send(messages.successExit);
+  res.send(messages.successExit);
 };
 
 module.exports = {
