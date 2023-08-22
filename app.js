@@ -13,8 +13,8 @@ const app = express();
 const { generalRoutes } = require('./routes/index');
 
 app.use(cors({
-  origin: true,
-  // origin: 'http://localhost:3000',
+  // origin: true,
+  origin: 'http://localhost:3000',
   credentials: true,
 }));
 
