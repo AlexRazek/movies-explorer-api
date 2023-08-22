@@ -14,8 +14,8 @@ const { generalRoutes } = require('./routes/index');
 
 app.use(cors({
   // origin: allowedCors,
-  // origin: true,
-  origin: 'http://localhost:3000',
+  origin: true,
+  // origin: 'http://localhost:3000',
   credentials: true,
 }));
 
@@ -33,8 +33,8 @@ const allowedCors = [
   'http://127.0.0.1:3000',
   'http://api.alexmovie.nomoredomains.xyz',
   'https://api.alexmovie.nomoredomains.xyz',
-  'http://api.nomoreparties.co/beatfilm-movies',
-  'https://api.nomoreparties.co/beatfilm-movies',
+  'http://api.nomoreparties.co',
+  'https://api.nomoreparties.co',
   // 'http://alexmesto.nomoredomains.work',
   // 'https://alexmesto.nomoredomains.work',
 ];
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
   if (allowedCors.includes(origin)) {
     // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', true);
+    // res.header('Access-Control-Allow-Credentials', true);
   }
 
   const { method } = req; // Сохраняем тип запроса (HTTP-метод) в соответствующую переменную
