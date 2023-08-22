@@ -32,8 +32,8 @@ const allowedCors = [
   'http://127.0.0.1:3000',
   'http://api.alexmovie.nomoredomains.xyz',
   'https://api.alexmovie.nomoredomains.xyz',
-  'http://api.nomoreparties.co',
-  'https://api.nomoreparties.co',
+  'http://api.nomoreparties.co/beatfilm-movies',
+  'https://api.nomoreparties.co/beatfilm-movies',
   // 'http://alexmesto.nomoredomains.work',
   // 'https://alexmesto.nomoredomains.work',
 ];
