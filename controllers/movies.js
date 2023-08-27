@@ -59,7 +59,7 @@ const addMovie = (req, res, next) => {
 
 // удаление фильма и запрет на удаление не своего фильма
 const deleteMovieById = (req, res, next) => {
-  Movie.findById(req.params._id)
+  Movie.findById(req.params._id).select('+owner')
     // eslint-disable-next-line consistent-return
     .then((movie) => {
       if (!movie) {
@@ -69,7 +69,7 @@ const deleteMovieById = (req, res, next) => {
         return next(new Forbidden(messages.tryDeleteMovie));
       }
       // return Card.findByIdAndRemove(req.params.cardId)
-      return Movie.deleteOne(movie)
+      return Movie.deleteOne(movie).select('-owner')
         .then(() => res.status(SUCCESS).send({ movie }))
         .catch(next);
     })
