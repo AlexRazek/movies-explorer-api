@@ -35,6 +35,8 @@ const allowedCors = [
   'https://api.alexmovie.nomoredomains.xyz',
   'http://api.nomoreparties.co',
   'https://api.nomoreparties.co',
+  'https://alexmovie.nomoredomains.sbs',
+  'http://alexmovie.nomoredomains.sbs',
   // 'http://alexmesto.nomoredomains.work',
   // 'https://alexmesto.nomoredomains.work',
 ];
