@@ -94,8 +94,8 @@ const login = (req, res, next) => {
           // используется none т.к. не проходят куки с сервера ВМ на localHost
           sameSite: 'None',
           secure: true,
-          domain: 'https://alexmovie.nomoredomains.sbs',
           path: '/',
+          domain: 'nomoredomains.sbs',
         });
       // .end(); // если у ответа нет тела, можно использовать метод end
       // вернём токен
