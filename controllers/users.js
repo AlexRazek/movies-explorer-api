@@ -95,7 +95,6 @@ const login = (req, res, next) => {
           sameSite: 'None',
           secure: true,
           path: '/',
-          domain: 'nomoredomains.xyz',
         });
       // .end(); // если у ответа нет тела, можно использовать метод end
       // вернём токен
