@@ -95,7 +95,7 @@ const login = (req, res, next) => {
           sameSite: 'None',
           secure: true,
           path: '/',
-          domain: 'api.alexmovie.nomoredomains.xyz',
+          domain: 'alexmovie.nomoredomains.sbs',
         });
       // .end(); // если у ответа нет тела, можно использовать метод end
       // вернём токен
