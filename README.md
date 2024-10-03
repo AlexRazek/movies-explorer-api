@@ -1,11 +1,19 @@
-# movies-explorer-api
+# Movies explorer
+# Дипломный проект Яндекс Практикум "Веб-разработчик", Backend
+## Frontend расположен по ссылке: https://github.com/AlexRazek/movies-explorer-frontend
 
-Репозиторий для приложения проекта `Movies`, включающий бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами и пользователями.
-  
-Адрес репозитория: https://github.com/AlexRazek/movies-explorer-api
+## Описание: 
+Репозиторий для приложения проекта `Movies explorer `, включающий бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с    фильмами и пользователями.
 
-## Ссылки на проект
+## Стек
+### Backend
 
-IP <158.160.64.138>
+-- NodeJS --
 
-Backend <https://api.alexmovie.nomoredomains.xyz>
+-- Express --
+
+-- MongoDB (Mongoose) --
+
+-- ESlint --
+
+-- Nginx --  
